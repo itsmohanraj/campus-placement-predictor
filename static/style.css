@@ -470,10 +470,50 @@ span {
 
   .navbar-menu__wrapper {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    z-index: 100;
+  }
+
+  .navbar-menu__wrapper.mobile-open {
+    display: flex;
+  }
+
+  .navbar-menu__wrapper .navbar__menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .navbar-menu__wrapper .navbar__menu a {
+    font-size: 20px;
+    color: #fff;
   }
 
   .navbar-menu__small-device {
     display: flex;
+    z-index: 110;
+  }
+
+  /* Hamburger to X animation */
+  .navbar-menu__small-device.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .navbar-menu__small-device.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-menu__small-device.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
   }
 
   .hero {
@@ -534,6 +574,7 @@ span {
     display: none;
   }
 }
+
 
 /* Small phones */
 @media screen and (max-width: 424px) {
