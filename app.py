@@ -4,7 +4,7 @@ import pickle
 import threading
 import time
 import urllib.request
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, send_from_directory
 
 app = Flask(__name__, template_folder='templates')
 
@@ -44,6 +44,10 @@ def contact():
 @app.route('/ping')
 def ping():
     return jsonify(status='ok')
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'favicon.svg', mimetype='image/svg+xml')
 
 @app.route('/predict', methods=['GET'])
 def predict():
