@@ -28,12 +28,21 @@ prevBtns.forEach((btn) => {
 
 function updateFormSteps() {
   formSteps.forEach((formStep) => {
-    formStep.classList.contains("form-step-active") &&
-      formStep.classList.remove("form-step-active");
+    formStep.classList.remove("form-step-active");
+    // Disable required on hidden steps so browser validation doesn't block submit
+    formStep.querySelectorAll('[required]').forEach(el => {
+      el.dataset.required = 'true';
+      el.removeAttribute('required');
+    });
   });
 
   formSteps[formStepsNum].classList.add("form-step-active");
+  // Re-enable required on the active step
+  formSteps[formStepsNum].querySelectorAll('[data-required]').forEach(el => {
+    el.setAttribute('required', '');
+  });
 }
+
 
 function updateProgressbar() {
   progressSteps.forEach((progressStep, idx) => {
@@ -52,13 +61,15 @@ function updateProgressbar() {
 
 const cursor = document.querySelector('.cursor');
 
-document.addEventListener('mousemove', e => {
+if (cursor) {
+  document.addEventListener('mousemove', e => {
     cursor.setAttribute("style", "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;")
-});
+  });
 
-document.addEventListener('click', e => {
+  document.addEventListener('click', e => {
     cursor.classList.add("expand");
     setTimeout(() => {
-        cursor.classList.remove("expand");
+      cursor.classList.remove("expand");
     }, 500);
-});
+  });
+}
