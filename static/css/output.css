@@ -1,87 +1,81 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
   }
 
-.montserrat-newfont {
-    font-family: "Montserrat";
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
+  50% {
+    background-position: 100% 50%;
   }
 
-  
-
-body{
-   
-    background: linear-gradient(89deg,#190019,#2b124c,#522b5b,#88556c,#6f2647,#000000);
-    animation: gradient-animation 12s ease infinite;
-    background-size: 360% 360%;
-    color: whitesmoke;
-    font-family: var(--newfont);
-    font-family: Montserrat;
-    -webkit-animation: AnimationName 30s ease-in-out infinite;
-    -moz-animation: AnimationName 30s ease-in-out infinite;
-    -o-animation: AnimationName 30s ease-in-out infinite;
-    animation: AnimationName 30s ease-in-out infinite;
-    height: 100vh;
-    
-
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.ans{
-  font-size: 40px;
+body {
+  background: linear-gradient(89deg, #190019, #2b124c, #522b5b, #88556c, #6f2647, #000000);
+  animation: gradient-animation 12s ease infinite;
+  background-size: 360% 360%;
+  color: whitesmoke;
+  font-family: Montserrat, sans-serif;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
-.out{
-  font-weight: 600;
-  font-size: 40px;
+
+.output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px 20px;
   text-align: center;
 }
 
-.output{
-    position: absolute;
-    top: 35%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    height: 80vh;
-    width: 100%;
-    
+.ans {
+  font-size: clamp(20px, 5vw, 40px);
+  margin-bottom: 20px;
 }
 
-footer{
-    font-size: 10px;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: 5%;
-    left: 33.5%;
+.out {
+  font-weight: 600;
+  font-size: clamp(28px, 7vw, 48px);
 }
 
+footer.end {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 20px;
+}
 
+footer.end h2 {
+  font-size: clamp(10px, 2vw, 14px);
+  font-weight: 400;
+  opacity: 0.7;
+}
 
+@media screen and (max-width: 480px) {
+  .output {
+    padding: 30px 16px;
+  }
 
-
-
-
+  footer.end {
+    bottom: 10px;
+  }
+}
